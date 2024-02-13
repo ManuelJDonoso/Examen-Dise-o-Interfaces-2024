@@ -1,20 +1,50 @@
+
+import java.awt.Color;
+import java.awt.Cursor;
+import javax.swing.JOptionPane;
+import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
+import org.netbeans.validation.api.ui.ValidationGroup;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author manuel
  */
 public class Reservas extends javax.swing.JFrame {
-
+int Xmouse,yMouse;
     /**
      * Creates new form Reservas
      */
     public Reservas() {
         initComponents();
+        ValidationGroup validador = validationPanel1.getValidationGroup();
+        validador.add(txt_nombre_Completo, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        validador.add(txtNPersonas, StringValidators.REQUIRE_VALID_INTEGER);
+        validador.add(txt_tel, StringValidators.minLength(9));
+        validador.add(txt_tel, StringValidators.maxLength(9));
+        validador.add(txtIntolerantes, StringValidators.REQUIRE_VALID_INTEGER);
+
+        validationPanel1.addChangeListener(new ChangeListener() {
+
+                @Override
+                public void stateChanged(ChangeEvent e) {
+
+                    if (validationPanel1.getProblem() == null) {
+                        btnEnviar.setEnabled(true);
+                    } else {
+                        btnEnviar.setEnabled(false);
+                    }
+                }
+
+            }
+        );
+
     }
 
     /**
@@ -26,21 +56,285 @@ public class Reservas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bg_FranjaHoraria = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txt_nombre_Completo = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txt_tel = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        txtNPersonas = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        RB14_16 = new javax.swing.JRadioButton();
+        RB_19_21 = new javax.swing.JRadioButton();
+        RB_21_23 = new javax.swing.JRadioButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        Cbtipo = new javax.swing.JComboBox<>();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        txtIntolerantes = new javax.swing.JTextField();
+        jPanel9 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        btnEnviar = new javax.swing.JButton();
+        validationPanel1 = new org.netbeans.validation.api.ui.swing.ValidationPanel();
+        Panel_lateal = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        Panel_header = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+
+        jPanel1.setFocusable(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new Color(0,0,0,0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Nombre Completo:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+
+        txt_nombre_Completo.setToolTipText("");
+        txt_nombre_Completo.setName("Nombre"); // NOI18N
+        jPanel2.add(txt_nombre_Completo, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 12, 173, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 610, 50));
+
+        jPanel3.setBackground(new Color(0,0,0,0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("Telefono:");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+
+        txt_tel.setName("Telefono"); // NOI18N
+        jPanel3.add(txt_tel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 167, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 600, 50));
+
+        jPanel4.setBackground(new Color(0,0,0,0));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setText("Fecha de reserva");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+        jPanel4.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 161, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 600, 50));
+
+        jPanel5.setBackground(new Color(0,0,0,0));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setText("Numero de Personas:");
+        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+
+        txtNPersonas.setName("numeroPersonas"); // NOI18N
+        jPanel5.add(txtNPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 177, -1));
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 600, 60));
+
+        jPanel6.setBackground(new Color(0,0,0,0));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setText("Franja horaria:");
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+
+        bg_FranjaHoraria.add(RB14_16);
+        RB14_16.setSelected(true);
+        RB14_16.setText("De 14 a 16h");
+        RB14_16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RB14_16ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(RB14_16, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
+
+        bg_FranjaHoraria.add(RB_19_21);
+        RB_19_21.setText("De 19 a21 h");
+        RB_19_21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RB_19_21ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(RB_19_21, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
+
+        bg_FranjaHoraria.add(RB_21_23);
+        RB_21_23.setText("De 21 a 23h");
+        RB_21_23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RB_21_23ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(RB_21_23, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 600, 50));
+
+        jPanel7.setBackground(new Color(0,0,0,0));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setText("Tipo de hamburguesas:");
+        jPanel7.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 34));
+
+        Cbtipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sencillas", "Especiales", "Edicion Limitada" }));
+        jPanel7.add(Cbtipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 270, -1));
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 590, 60));
+
+        jPanel8.setBackground(new Color(0,0,0,0));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setText("Nº de intolerantes al gluten");
+        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+
+        txtIntolerantes.setText("0");
+        txtIntolerantes.setEnabled(false);
+        txtIntolerantes.setName("NIntolerantes"); // NOI18N
+        jPanel8.add(txtIntolerantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 18, 257, -1));
+
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 590, 60));
+
+        jPanel9.setBackground(new Color(0,0,0,0));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("Volver");
+        jPanel9.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 12, -1, -1));
+
+        btnEnviar.setText("Enviar");
+        btnEnviar.setEnabled(false);
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarActionPerformed(evt);
+            }
+        });
+        jPanel9.add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 12, -1, -1));
+
+        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 590, 390, 60));
+
+        validationPanel1.setBackground(new Color(0,0,0,0));
+        jPanel1.add(validationPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 400, -1));
+
+        Panel_lateal.setBackground(new java.awt.Color(153, 153, 255));
+        Panel_lateal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hamburguesa.png"))); // NOI18N
+        Panel_lateal.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 12, -1, -1));
+
+        jPanel1.add(Panel_lateal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 670));
+
+        Panel_header.setBackground(new java.awt.Color(255, 255, 102));
+        Panel_header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                Panel_headerMouseDragged(evt);
+            }
+        });
+        Panel_header.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Panel_headerMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                Panel_headerMouseReleased(evt);
+            }
+        });
+
+        jButton3.setText("x");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("RESERVAS");
+
+        javax.swing.GroupLayout Panel_headerLayout = new javax.swing.GroupLayout(Panel_header);
+        Panel_header.setLayout(Panel_headerLayout);
+        Panel_headerLayout.setHorizontalGroup(
+            Panel_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_headerLayout.createSequentialGroup()
+                .addGap(0, 331, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3))
+        );
+        Panel_headerLayout.setVerticalGroup(
+            Panel_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_headerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(Panel_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jLabel10))
+                .addContainerGap())
+        );
+
+        jPanel1.add(Panel_header, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 760, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RB14_16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB14_16ActionPerformed
+        // TODO add your handling code here:
+         txtIntolerantes.setEnabled(false);
+    }//GEN-LAST:event_RB14_16ActionPerformed
+
+    private void RB_21_23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_21_23ActionPerformed
+         // TODO add your handling code here:
+         txtIntolerantes.setEnabled(true);
+    }//GEN-LAST:event_RB_21_23ActionPerformed
+
+    private void RB_19_21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_19_21ActionPerformed
+         // TODO add your handling code here:
+         txtIntolerantes.setEnabled(false);
+    }//GEN-LAST:event_RB_19_21ActionPerformed
+
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+         // TODO add your handling code here:
+         JOptionPane.showMessageDialog(this, "¡Hecho! Ya tiene su reserva. Muchas Gracias");
+    }//GEN-LAST:event_btnEnviarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+         // TODO add your handling code here:
+         System.exit(0);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void Panel_headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_headerMousePressed
+          // TODO add your handling code here:
+             Xmouse=evt.getX();
+        yMouse=evt.getY();
+        Panel_header.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+    }//GEN-LAST:event_Panel_headerMousePressed
+
+    private void Panel_headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_headerMouseDragged
+         // TODO add your handling code here:
+          int x =evt.getXOnScreen();
+        int y= evt.getYOnScreen();
+        this.setLocation(x-Xmouse, y -yMouse);
+    }//GEN-LAST:event_Panel_headerMouseDragged
+
+    private void Panel_headerMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Panel_headerMouseReleased
+         // TODO add your handling code here:
+         Panel_header.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_Panel_headerMouseReleased
 
     /**
      * @param args the command line arguments
@@ -78,5 +372,39 @@ public class Reservas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> Cbtipo;
+    private javax.swing.JPanel Panel_header;
+    private javax.swing.JPanel Panel_lateal;
+    private javax.swing.JRadioButton RB14_16;
+    private javax.swing.JRadioButton RB_19_21;
+    private javax.swing.JRadioButton RB_21_23;
+    private javax.swing.ButtonGroup bg_FranjaHoraria;
+    private javax.swing.JButton btnEnviar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JTextField txtIntolerantes;
+    private javax.swing.JTextField txtNPersonas;
+    private javax.swing.JTextField txt_nombre_Completo;
+    private javax.swing.JTextField txt_tel;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel validationPanel1;
     // End of variables declaration//GEN-END:variables
-}
+} 
